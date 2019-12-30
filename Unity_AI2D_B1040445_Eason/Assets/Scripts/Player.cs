@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     public int speed = 50;
@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private bool isGround;
     private Rigidbody2D r2d;
     private Transform tra;
+    public UnityEvent onEat;
 
     private void Start()
     {
@@ -29,6 +30,15 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isGround = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag=="鑽石")
+        {
+            Destroy(collision.gameObject);
+            onEat.Invoke();
+        }
     }
 
     /// <summary>
