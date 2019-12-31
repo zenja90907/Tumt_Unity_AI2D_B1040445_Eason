@@ -4,9 +4,13 @@ public class Player : MonoBehaviour
 {
     public int speed = 50;
     public float jump = 5f;
+    public string PlayerName = "玩家";
     private bool isGround;
     private Rigidbody2D r2d;
     private Transform tra;
+    [Header("血量"), Range(0, 200)]
+    public float hp = 100;
+
     public UnityEvent onEat;
 
     private void Start()
@@ -18,7 +22,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.D)) Turn();
-        if(Input.GetKeyDown(KeyCode.A)) Turn(180);
+        if (Input.GetKeyDown(KeyCode.A)) Turn(180);
     }
 
     private void FixedUpdate()
@@ -68,5 +72,10 @@ public class Player : MonoBehaviour
     private void Turn(int direction=0)
     {
         tra.eulerAngles = new Vector3(0, direction,0);
+    }
+
+    public void Damage(float damage)
+    {
+        hp -= damage;
     }
 }

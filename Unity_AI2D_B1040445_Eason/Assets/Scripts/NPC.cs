@@ -25,13 +25,6 @@ public class NPC : MonoBehaviour
     public GameObject objCanvas;
     public Text textsay;
 
-    private AudioSource aud;
-
-    private void Start()
-    {
-        aud = GetComponent<AudioSource>();
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "玩家")
