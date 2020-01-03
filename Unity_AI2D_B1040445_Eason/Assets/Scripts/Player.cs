@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
+
 public class Player : MonoBehaviour
 {
     public int speed = 50;
@@ -10,6 +12,9 @@ public class Player : MonoBehaviour
     private Transform tra;
     [Header("血量"), Range(0, 200)]
     public float hp = 100;
+    public Image hpBar;
+    public GameObject final;
+    private float hpMax;
 
     public UnityEvent onEat;
 
@@ -17,6 +22,7 @@ public class Player : MonoBehaviour
     {
         r2d = GetComponent<Rigidbody2D>();
         tra = GetComponent<Transform>();
+        hpMax = hp;
     }
 
     private void Update()
@@ -77,5 +83,8 @@ public class Player : MonoBehaviour
     public void Damage(float damage)
     {
         hp -= damage;
+        hpBar.fillAmount = hp / hpMax;
+
+        if (hp <= 0) final.SetActive(true);
     }
 }

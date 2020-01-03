@@ -12,9 +12,9 @@ public class NPC : MonoBehaviour
     public state _state;
 
     [Header("對話")]
-    public string sayStart = "歡迎來到任務地點";
-    public string NotComplete = "任務尚未完成";
-    public string Complete = "任務已完成";
+    public string sayStart = "歡迎來到任務地點，請躲避異蟲並成功拾取10顆鑽石";
+    public string NotComplete = "抱歉，任務尚未完成";
+    public string Complete = "恭喜!任務已完成";
     [Header("對話速度")]
     public float speed = 1.5f;
     [Header("任務相關")]

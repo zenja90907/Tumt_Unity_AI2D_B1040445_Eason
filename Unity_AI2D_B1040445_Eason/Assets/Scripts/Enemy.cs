@@ -39,9 +39,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name=="玩家")
+        if (collision.gameObject.name == "玩家")
         {
             collision.gameObject.GetComponent<Player>().Damage(damage);
         }
